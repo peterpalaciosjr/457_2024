@@ -65,14 +65,6 @@ public class RobotContainer
                                                                      m_driverController::getRightY));
     m_intakeSubsystem.setDefaultCommand(m_intakeSubsystem.setIntakeCmd(0));
     m_shooterSubsystem.setDefaultCommand(m_shooterSubsystem.setShooterCmd(0));
-//    m_armSubsystem.setDefaultCommand(m_armSubsystem.armLocation(m_driverController::getAButton));
-//    m_wristSubsystem.setDefaultCommand(m_wristSubsystem.wristPosition(m_driverController::getBButton,
-//                                                                      m_driverController::getXButton));
-//
-//    m_shooterSubsystem.setDefaultCommand(m_shooterSubsystem.runMotors(m_driverController::getRightBumper));
-
-//    new Trigger(m_driverController::getBackButton).whileTrue(m_intakeSubsystem.feedCommand());
-
     new Trigger(m_driverController::getAButton).whileTrue(m_armSubsystem.setArmLocation(240));
     new Trigger(m_driverController::getBButton).whileTrue(m_armSubsystem.setArmLocation(310));
 
