@@ -41,13 +41,13 @@ public class RobotContainer
    */
   public RobotContainer()
   {
-    try
-    {
-      CameraServer.startAutomaticCapture();
-    } catch (Exception e)
-    {
-      DriverStation.reportWarning(e.getMessage(), false);
-    }
+    // try
+    // {
+    //   CameraServer.startAutomaticCapture();
+    // } catch (Exception e)
+    // {
+    //   DriverStation.reportWarning(e.getMessage(), false);
+    // }
     // Configure the trigger bindings
     configureBindings();
   }
