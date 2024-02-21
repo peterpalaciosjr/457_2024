@@ -52,6 +52,8 @@ public class RobotContainer
     configureBindings();
     NamedCommands.registerCommand("runShooter", runShooter(2100));
     NamedCommands.registerCommand("intakeFullSpeed", m_intakeSubsystem.intakeCommand(0.8));
+    NamedCommands.registerCommand("stopShooter", m_shooterSubsystem.setShooterCmd(0));
+    NamedCommands.registerCommand("stopIntake", m_intakeSubsystem.setIntakeCmd(0));
     m_driveSubsystem.setupPathPlanner();
   }
 
