@@ -33,7 +33,7 @@ public class DriveSubsystem extends SubsystemBase {
     right_main = new CANSparkMax(DRIVE.RIGHT_CAN_ID, MotorType.kBrushless);
     right_follower = new CANSparkMax(DRIVE.RIGHT_FOLLOWER_CAN_ID, MotorType.kBrushless);
 
-    int driveCurrentLimit = 40;
+  
 
     // Set the inversion states of the drive train.
     left_main.setInverted(false);
@@ -41,11 +41,14 @@ public class DriveSubsystem extends SubsystemBase {
     right_main.setInverted(true);
     right_follower.setInverted(true);
 
+    int driveCurrentLimit = 40;
+
     left_main.setSmartCurrentLimit(driveCurrentLimit);
     left_follower.setSmartCurrentLimit(driveCurrentLimit);
     right_main.setSmartCurrentLimit(driveCurrentLimit);
     right_follower.setSmartCurrentLimit(driveCurrentLimit);
 
+  
     leftEncoder = left_main.getEncoder();
     rightEncoder = right_main.getEncoder();
 
@@ -83,7 +86,7 @@ public class DriveSubsystem extends SubsystemBase {
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return run(
         () -> {
-          drive.tankDrive(leftStick.get(), rightStick.get());
+          drive.tankDrive(leftStick.get()*.8, rightStick.get()*.75);
         });
   }
 

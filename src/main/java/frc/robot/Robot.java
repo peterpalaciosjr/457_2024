@@ -66,7 +66,25 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+
+    if (Timer.getFPGATimestamp() - initTime < 0.5)
+      {RobotContainer.m_drivetrain.tankDrive(-0.2, -0.2);}
+    //backward 0.5 second
+    else if (Timer.getFPGATimestamp() - initTime < 1.2) 
+      {RobotContainer.m_drivetrain.tankDrive(0.2, 0.2);}
+    //wait .3 second
+    else if (Timer.getFPGATimestamp() - initTime < 2.5)
+      {RobotContainer.m_drivetrain.tankDrive(0.0, 0.0);}
+    //forward 1.5 seconds
+    else if (Timer.getFPGATimestamp() - initTime < 5.5)
+      {RobotContainer.m_drivetrain.tankDrive(-0.3, -0.3);}
+    
+    else {RobotContainer.m_drivetrain.tankDrive(0.0, 0.0);}
+
+
+
+  }
 
   @Override
   public void teleopInit() {

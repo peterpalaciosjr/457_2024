@@ -70,7 +70,7 @@ public class RobotContainer
 
     new Trigger(m_driverController::getXButton).whileTrue(new ParallelCommandGroup(m_shooterSubsystem.setShooterCmd(0.5),
                                                                                    m_intakeSubsystem.feedCommand(-0.3)));
-    new Trigger(m_driverController::getYButton).whileTrue(m_intakeSubsystem.intakeCommand(0.3));
+    new Trigger(m_driverController::getYButton).whileTrue(m_intakeSubsystem.intakeCommand(-1));
 
   }
 

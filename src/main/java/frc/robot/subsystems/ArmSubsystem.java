@@ -17,7 +17,6 @@ import java.util.function.Supplier;
 
 public class ArmSubsystem extends SubsystemBase
 {
-
   CANSparkMax        arm;
   SparkPIDController armPID;
   RelativeEncoder    armEncoder;
