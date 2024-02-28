@@ -4,8 +4,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.DriverStation;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
@@ -50,6 +50,24 @@ public class RobotContainer
     // }
     // Configure the trigger bindings
     configureBindings();
+    NamedCommands.registerCommand("runShooter", runShooter(2100));
+    NamedCommands.registerCommand("intakeFullSpeed", m_intakeSubsystem.intakeCommand(0.8));
+    NamedCommands.registerCommand("stopShooter", m_shooterSubsystem.setShooterCmd(0));
+    NamedCommands.registerCommand("stopIntake", m_intakeSubsystem.setIntakeCmd(0));
+    m_driveSubsystem.setupPathPlanner();
+  }
+
+  /**
+   * Run the shooter at the RPM and feed when up to speed.
+   *
+   * @param velocityRPM Velocity of the shooter as RPM.
+   * @return {@link ParallelCommandGroup} which runs the shooter than intake when ready.
+   */
+  public Command runShooter(double velocityRPM)
+  {
+    return new ParallelCommandGroup(m_shooterSubsystem.runShooterCmd(velocityRPM),
+                                    m_shooterSubsystem.waitForShooter()
+                                                      .andThen(m_intakeSubsystem.feedCommand(-0.3)));
   }
 
   /**
@@ -81,7 +99,8 @@ public class RobotContainer
    */
   public Command getAutonomousCommand()
   {
+
     // An example command will be run in autonomous
-    return null; //Autos.exampleAuto(m_driveSubsystem);
+    return AutoBuilder.buildAuto("auto"); //Autos.exampleAuto(m_driveSubsystem);
   }
 }

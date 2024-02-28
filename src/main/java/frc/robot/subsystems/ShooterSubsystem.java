@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants.MOTOR_IDS.SHOOTER;
 
 public class ShooterSubsystem extends SubsystemBase
@@ -18,6 +19,7 @@ public class ShooterSubsystem extends SubsystemBase
   CANSparkMax        shooter;
   SparkPIDController shooterPID;
   RelativeEncoder    shooterEncoder;
+  double             targetVelocity = 0;
 
   public ShooterSubsystem()
   {
@@ -68,10 +70,18 @@ public class ShooterSubsystem extends SubsystemBase
    */
   public void runShooter(double velocity)
   {
+    targetVelocity = velocity;
     shooterPID.setReference(velocity, ControlType.kVelocity);
   }
 
-
+  /**
+   * Wait command that expires when the shooter is ramped up.
+   * @return {@link WaitCommand} that ends when the shooter is ramped up.
+   */
+  public Command waitForShooter()
+  {
+    return new WaitCommand(30).until(() -> shooterEncoder.getVelocity() >= targetVelocity);
+  }
 
   /**
    * Run the shooter command
