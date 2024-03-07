@@ -31,7 +31,7 @@ import java.util.function.Supplier;
 public class DriveSubsystem extends SubsystemBase
 {
 
-  DifferentialDrive  drive;
+  public static DifferentialDrive  drive;
   SparkPIDController leftPID, rightPID;
   RelativeEncoder leftEncoder, rightEncoder;
   DifferentialDrivePoseEstimator odometry;

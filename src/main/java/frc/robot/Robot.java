@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.DriveSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,6 +22,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
+  double initTime;
 
   private RobotContainer m_robotContainer;
 
@@ -37,12 +39,12 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     UsbCamera camera = CameraServer.startAutomaticCapture();
 
-    camera.setResolution(640, 480);
+    // camera.setResolution(640, 480);
 
-    // Get a CvSink. This will capture Mats from the camera
-    CvSink cvSink = CameraServer.getVideo();
-    // Setup a CvSource. This will send images back to the Dashboard
-    CvSource outputStream = CameraServer.putVideo("Rectangle", 640, 480);
+    // // Get a CvSink. This will capture Mats from the camera
+    // CvSink cvSink = CameraServer.getVideo();
+    // // Setup a CvSource. This will send images back to the Dashboard
+    // CvSource outputStream = CameraServer.putVideo("Rectangle", 640, 480);
 
     
 
@@ -86,19 +88,25 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
 
-    // if (Timer.getFPGATimestamp() - initTime < 0.5)
-    //   {RobotContainer.m_drivetrain.tankDrive(-0.2, -0.2);}
-    // //backward 0.5 second
-    // else if (Timer.getFPGATimestamp() - initTime < 1.2) 
-    //   {RobotContainer.m_drivetrain.tankDrive(0.2, 0.2);}
-    // //wait .3 second
-    // else if (Timer.getFPGATimestamp() - initTime < 2.5)
-    //   {RobotContainer.m_drivetrain.tankDrive(0.0, 0.0);}
-    // //forward 1.5 seconds
-    // else if (Timer.getFPGATimestamp() - initTime < 5.5)
-    //   {RobotContainer.m_drivetrain.tankDrive(-0.3, -0.3);}
+    if (Timer.getFPGATimestamp() - initTime < 0.5) {
+      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    }
+    //backward 0.5 second
+    else if (Timer.getFPGATimestamp() - initTime < 1.2) {
+      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    }
+    //wait .3 second
+    else if (Timer.getFPGATimestamp() - initTime < 2.5) {
+      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    }
+    //forward 1.5 seconds
+    else if (Timer.getFPGATimestamp() - initTime < 5.5) {
+      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    }
     
-    // else {RobotContainer.m_drivetrain.tankDrive(0.0, 0.0);}
+    else {
+      DriveSubsystem.drive.tankDrive(0.0, 0.0);
+    }
 
 
 

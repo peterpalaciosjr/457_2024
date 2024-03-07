@@ -17,6 +17,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
  * little robot logic should actually be handled in the {@link Robot} periodic methods (other than the scheduler calls).
@@ -24,9 +25,8 @@ import frc.robot.subsystems.ShooterSubsystem;
  */
 public class RobotContainer
 {
-
   // The robot's subsystems and commands are defined here...
-  private final DriveSubsystem   m_driveSubsystem   = new DriveSubsystem();
+  public static final DriveSubsystem   m_driveSubsystem   = new DriveSubsystem();
   private final ArmSubsystem     m_armSubsystem     = new ArmSubsystem();
   private final IntakeSubsystem  m_intakeSubsystem  = new IntakeSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
