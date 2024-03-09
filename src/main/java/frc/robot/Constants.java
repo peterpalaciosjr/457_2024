@@ -19,21 +19,21 @@ public final class Constants {
     {
       public static final int LEFT_CAN_ID = 3;
       public static final int LEFT_FOLLOWER_CAN_ID = 4;
-      public static final int RIGHT_CAN_ID = 7;
-      public static final int RIGHT_FOLLOWER_CAN_ID = 8;
+      public static final int RIGHT_CAN_ID = 1;
+      public static final int RIGHT_FOLLOWER_CAN_ID = 2;
     }
     public static class INTAKE
     {
-      public static final int INTAKE_CAN_ID = 6;
+      public static final int INTAKE_CAN_ID = 5;
     }
     public static class ARM
     {
-      public static final int ARM_CAN_ID = 1;
+      public static final int ARM_CAN_ID = 6;
     }
     public static class SHOOTER
     {
-      public static final int SHOOTER_CAN_ID = 2;
-      public static final int SHOOTER_FOLLOWER_CAN_ID = 2;
+      public static final int SHOOTER_CAN_ID = 8;
+      public static final int SHOOTER_FOLLOWER_CAN_ID = 9;
     }
   }
   public static class OperatorConstants {

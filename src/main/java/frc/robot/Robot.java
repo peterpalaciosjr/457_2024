@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.CvSink;
 import edu.wpi.first.cscore.CvSource;
@@ -37,7 +38,7 @@ public class Robot extends TimedRobot {
 
     // Basic robot camera initializations for teleoperation and autonomous modes--planning on using an april tag recognition program under auto.
     m_robotContainer = new RobotContainer();
-    UsbCamera camera = CameraServer.startAutomaticCapture();
+    //UsbCamera camera = CameraServer.startAutomaticCapture();
 
     // camera.setResolution(640, 480);
 
