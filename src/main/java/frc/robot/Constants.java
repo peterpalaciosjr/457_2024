@@ -29,6 +29,7 @@ public final class Constants {
     public static class ARM
     {
       public static final int ARM_CAN_ID = 6;
+      public static final int ARM_CAN_ID_TWO = 7;
     }
     public static class SHOOTER
     {
@@ -41,4 +42,9 @@ public final class Constants {
     public static final int kOperatorControllerPort = 1;
 
   }
+
+public static class MISC
+{
+  public static final double ARM_CONVERSION_FACTOR = 360 / 112.5;
+}
 }

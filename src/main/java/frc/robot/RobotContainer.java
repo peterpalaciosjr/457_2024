@@ -83,12 +83,20 @@ public class RobotContainer
                                                                      m_driverController::getRightY));
     m_intakeSubsystem.setDefaultCommand(m_intakeSubsystem.setIntakeCmd(0));
     m_shooterSubsystem.setDefaultCommand(m_shooterSubsystem.setShooterCmd(0));
-    new Trigger(m_driverController::getAButton).whileTrue(m_armSubsystem.setArmLocation(240));
-    new Trigger(m_driverController::getBButton).whileTrue(m_armSubsystem.setArmLocation(310));
 
-    new Trigger(m_driverController::getXButton).whileTrue(new ParallelCommandGroup(m_shooterSubsystem.setShooterCmd(0.5),
-                                                                                   m_intakeSubsystem.feedCommand(-0.3)));
-    new Trigger(m_driverController::getYButton).whileTrue(m_intakeSubsystem.intakeCommand(-1));
+
+    new Trigger(m_operatorController::getAButton).whileTrue(m_armSubsystem.setArmLocation(240));
+    new Trigger(m_operatorController::getBButton).whileTrue(m_armSubsystem.setArmLocation(310));
+
+    new Trigger(m_operatorController::getXButton).whileTrue(m_armSubsystem.setArmLocation(260));
+    new Trigger(m_operatorController::getYButton).whileTrue(m_armSubsystem.setArmLocation(280));
+
+    // new Trigger(m_driverController::getAButton).whileTrue(m_armSubsystem.setArmSecondLocation(240));
+    // new Trigger(m_driverController::getBButton).whileTrue(m_armSubsystem.setArmSecondLocation(310));
+
+    // new Trigger(m_driverController::getXButton).whileTrue(new ParallelCommandGroup(m_shooterSubsystem.setShooterCmd(0.5),
+    //                                                                                m_intakeSubsystem.feedCommand(-0.3)));
+    // new Trigger(m_driverController::getYButton).whileTrue(m_intakeSubsystem.intakeCommand(-1));
 
   }
 
