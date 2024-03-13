@@ -7,10 +7,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.cameraServer.CameraServer; // Added
+import edu.wpi.first.cscore.UsbCamera; // Added
+import edu.wpi.first.cscore.CvSink; // Added
+import edu.wpi.first.cscore.CvSource; // Added
 
 public class Robot extends TimedRobot {
    private Command m_autonomousCommand;
-   double initTime;
+    // double initTime; // Commented out
    private RobotContainer m_robotContainer;
 
    // Class instantiations for autonomous organizational purposes
@@ -23,6 +27,16 @@ public class Robot extends TimedRobot {
 
    public void robotInit() {
       this.m_robotContainer = new RobotContainer();
+
+      // Camera & CV Object Initializations
+      UsbCamera camera = CameraServer.startAutomaticCapture();
+      camera.setResolution(640, 480);
+
+      CvSink cvSink = CameraServer.getVideo();
+      CvSource outputStream = CameraServer.putVideo("Rectangle", 640, 480);
+
+
+
    }
 
    public void robotPeriodic() {
