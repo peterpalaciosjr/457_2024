@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
 
    public void autonomousPeriodic() {
       if (Timer.getFPGATimestamp() - this.initTime < 0.5) {
-         DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+         IntakeSubsystem.drive.tankDrive(-0.3, -0.3);
       } else if (Timer.getFPGATimestamp() - this.initTime < 1.2) {
          DriveSubsystem.drive.tankDrive(-0.3, -0.3);
       } else if (Timer.getFPGATimestamp() - this.initTime < 2.5) {
