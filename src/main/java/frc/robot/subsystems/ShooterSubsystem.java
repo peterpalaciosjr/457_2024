@@ -16,7 +16,8 @@ import frc.robot.Constants.MOTOR_IDS.SHOOTER;
 public class ShooterSubsystem extends SubsystemBase
 {
 
-  CANSparkMax        shooter;
+  CANSparkMax shooter;
+  CANSparkMax secondShooter;
   SparkPIDController shooterPID;
   RelativeEncoder    shooterEncoder;
   double             targetVelocity = 0;
@@ -24,6 +25,11 @@ public class ShooterSubsystem extends SubsystemBase
   public ShooterSubsystem()
   {
     shooter = new CANSparkMax(SHOOTER.SHOOTER_CAN_ID, MotorType.kBrushless);
+    secondShooter = new CANSparkMax(SHOOTER.SHOOTER_FOLLOWER_CAN_ID, MotorType.kBrushless);
+
+    secondShooter.follow(shooter);
+    shooter.setSmartCurrentLimit(91);
+    
     shooterEncoder = shooter.getEncoder();
     shooterPID = shooter.getPIDController();
 
@@ -59,7 +65,7 @@ public class ShooterSubsystem extends SubsystemBase
    */
   public Command setShooterCmd(double dutycycle)
   {
-    return runOnce(() -> shooter.set(dutycycle));
+    return run(() -> shooter.set(dutycycle));
   }
 
 

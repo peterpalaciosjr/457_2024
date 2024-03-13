@@ -11,11 +11,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Constants.MISC;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import com.revrobotics.CANSparkMax;
+import frc.robot.Constants;
 
 
 /**
@@ -35,6 +38,7 @@ public class RobotContainer
   private final XboxController m_driverController   = new XboxController(OperatorConstants.kDriverControllerPort);
   private final XboxController m_operatorController = new XboxController(OperatorConstants.kOperatorControllerPort);
 
+  private final double armManualSpeed = MISC.ARM_MANUAL_SPEED;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -85,18 +89,19 @@ public class RobotContainer
     m_shooterSubsystem.setDefaultCommand(m_shooterSubsystem.setShooterCmd(0));
 
 
-    new Trigger(m_operatorController::getAButton).whileTrue(m_armSubsystem.setArmLocation(240));
-    new Trigger(m_operatorController::getBButton).whileTrue(m_armSubsystem.setArmLocation(310));
+    // Arm Preset Commands
+    new Trigger(m_operatorController::getAButton).whileTrue(m_armSubsystem.setArmLocation(0));
+    new Trigger(m_operatorController::getBButton).whileTrue(m_armSubsystem.setArmWithSpeedControl(80, 0.03, 0.01));
 
-    new Trigger(m_operatorController::getXButton).whileTrue(m_armSubsystem.setArmLocation(260));
-    new Trigger(m_operatorController::getYButton).whileTrue(m_armSubsystem.setArmLocation(280));
+    // Manual Arm Movement Commands
+    // m_armSubsystem.setDefaultCommand(m_armSubsystem.setManualArmLocation(m_operatorController::getRightY));
 
-    // new Trigger(m_driverController::getAButton).whileTrue(m_armSubsystem.setArmSecondLocation(240));
-    // new Trigger(m_driverController::getBButton).whileTrue(m_armSubsystem.setArmSecondLocation(310));
+    new Trigger(m_operatorController::getBackButton).whileTrue(m_armSubsystem.setManualArmLocation("down", armManualSpeed));
+    new Trigger(m_operatorController::getStartButton).whileTrue(m_armSubsystem.setManualArmLocation("up", armManualSpeed));
 
-    // new Trigger(m_driverController::getXButton).whileTrue(new ParallelCommandGroup(m_shooterSubsystem.setShooterCmd(0.5),
-    //                                                                                m_intakeSubsystem.feedCommand(-0.3)));
-    // new Trigger(m_driverController::getYButton).whileTrue(m_intakeSubsystem.intakeCommand(-1));
+    new Trigger(m_operatorController::getYButton).whileTrue(m_shooterSubsystem.setShooterCmd(0.420));
+    new Trigger(m_operatorController::getLeftBumper).whileTrue(m_intakeSubsystem.intakeCommand(.6));
+    new Trigger(m_operatorController::getRightBumper).whileTrue(m_intakeSubsystem.intakeCommand(-0.35));
 
   }
 

@@ -20,6 +20,8 @@ public class IntakeSubsystem extends SubsystemBase
   {
     intake = new CANSparkMax(INTAKE.INTAKE_CAN_ID, MotorType.kBrushless);
     noteInput = new DigitalInput(5);
+
+    intake.setInverted(true);
   }
 
   public void setIntake(double percentage)

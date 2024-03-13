@@ -33,8 +33,8 @@ public final class Constants {
     }
     public static class SHOOTER
     {
-      public static final int SHOOTER_CAN_ID = 8;
-      public static final int SHOOTER_FOLLOWER_CAN_ID = 9;
+      public static final int SHOOTER_CAN_ID = 9;
+      public static final int SHOOTER_FOLLOWER_CAN_ID = 8;
     }
   }
   public static class OperatorConstants {
@@ -45,6 +45,7 @@ public final class Constants {
 
 public static class MISC
 {
-  public static final double ARM_CONVERSION_FACTOR = 360 / 225;
+  public static final double ARM_CONVERSION_FACTOR = 360.0 / 225.0;
+  public static final double ARM_MANUAL_SPEED = 0.8;
 }
 }

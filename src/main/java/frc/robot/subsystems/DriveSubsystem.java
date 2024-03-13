@@ -125,7 +125,7 @@ public class DriveSubsystem extends SubsystemBase
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return run(
         () -> {
-          drive.tankDrive(leftStick.get()*.5, rightStick.get()*.5);
+          drive.tankDrive(leftStick.get()*.7, rightStick.get()*.7);
         });
   }
 
