@@ -97,11 +97,11 @@ public class ArmSubsystem extends SubsystemBase
     arm.set(0.3);
     if (movement == "up" && armEncoder.getPosition() > 0)
     {
-      return run(() -> armPID.setReference(armEncoder.getPosition() - 10, ControlType.kPosition));
+      return run(() -> armPID.setReference(armEncoder.getPosition() - 8, ControlType.kPosition));
     }
     else if (movement == "down" && armEncoder.getPosition() < 90)
     {
-      return run(() -> armPID.setReference(armEncoder.getPosition() + 10, ControlType.kPosition));
+      return run(() -> armPID.setReference(armEncoder.getPosition() + 8, ControlType.kPosition));
     }
     else if (movement == "down" && armEncoder.getPosition() >= 90)
     {
