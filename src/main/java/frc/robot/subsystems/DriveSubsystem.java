@@ -59,7 +59,7 @@ public class DriveSubsystem extends SubsystemBase
     right_main.setInverted(true);
     right_follower.setInverted(true);
 
-    int driveCurrentLimit = 40;
+    int driveCurrentLimit = 60;
 
     left_main.setSmartCurrentLimit(driveCurrentLimit);
     left_follower.setSmartCurrentLimit(driveCurrentLimit);

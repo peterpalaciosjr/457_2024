@@ -89,25 +89,21 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
 
-    if (Timer.getFPGATimestamp() - initTime < 0.5) {
-      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
-    }
-    //backward 0.5 second
-    else if (Timer.getFPGATimestamp() - initTime < 1.2) {
-      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
-    }
-    //wait .3 second
-    else if (Timer.getFPGATimestamp() - initTime < 2.5) {
-      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
-    }
-    //forward 1.5 seconds
-    else if (Timer.getFPGATimestamp() - initTime < 5.5) {
-      DriveSubsystem.drive.tankDrive(-0.3, -0.3);
-    }
+    // if (Timer.getFPGATimestamp() - initTime < 1) {
+    //   DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    // }
+    // //backward 0.5 second
+    // else if (Timer.getFPGATimestamp() - initTime < 2.5) {
+    //   DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    // }
+    // //wait .3 second
+    // else if (Timer.getFPGATimestamp() - initTime < 3) {
+    //   DriveSubsystem.drive.tankDrive(-0.3, -0.3);
+    // }
     
-    else {
-      DriveSubsystem.drive.tankDrive(0.0, 0.0);
-    }
+    // else {
+    //   DriveSubsystem.drive.tankDrive(0.0, 0.0);
+    // }
 
 
 
@@ -128,7 +124,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic()
   {
-    
+
   }
 
   @Override

@@ -14,7 +14,7 @@ public final class Autos {
     return null;
   }
 
-  private Autos() {
-    throw new UnsupportedOperationException("This is a utility class!");
-  }
+  // private Autos() {
+  //   throw new UnsupportedOperationException("This is a utility class!");
+  // }
 }
